@@ -1,4 +1,4 @@
-package prs.fltoshi.models;
+package prs.fltoshi.models.types;
 
 import java.util.List;
 
@@ -7,6 +7,9 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
+/*
+* Модель наземной техники
+*/
 @Data
 @SuperBuilder
 @NoArgsConstructor

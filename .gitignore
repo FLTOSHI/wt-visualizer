@@ -16,3 +16,6 @@ target/
 # Система
 .DS_Store
 Thumbs.db
+
+# Для разработки
+json-templates/

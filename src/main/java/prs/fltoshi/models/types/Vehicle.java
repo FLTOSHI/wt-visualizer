@@ -1,4 +1,4 @@
-package prs.fltoshi.models;
+package prs.fltoshi.models.types;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +8,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
+import prs.fltoshi.models.common.CrewService;
+import prs.fltoshi.models.common.EconomyRewards;
+import prs.fltoshi.models.common.RepairStats;
+import prs.fltoshi.models.common.WeaponSystem;
 
+/*
+* Базовый класс для всех видов техники
+*/
 @Data
 @SuperBuilder
 @NoArgsConstructor
@@ -49,19 +56,14 @@ public abstract class Vehicle {
     private boolean onMarketplace;
 
     // --- Экипаж и обучение ---
-    private int crewTotalCount;
-    
-    @JsonProperty("train1_cost")
-    private int trainFirstCost;
-    
-    @JsonProperty("train2_cost")
-    private int trainSecondCost;
-    
-    @JsonProperty("train3_cost_gold")
-    private int trainThirdCostGold;
-    
-    @JsonProperty("train3_cost_exp")
-    private int trainThirdCostExp;
+    private CrewService crew;
+
+    // --- Экономика ---
+    private EconomyRewards rewards;
+    private RepairStats repair;
+
+    // --- Оружие ---
+    private WeaponSystem weaponSystem;
 
     // --- Визуализация и прочее ---
     private String vehicleSingleImageUrl;

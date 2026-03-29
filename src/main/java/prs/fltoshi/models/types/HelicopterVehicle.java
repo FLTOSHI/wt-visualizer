@@ -1,17 +1,17 @@
-package prs.fltoshi.models;
+package prs.fltoshi.models.types;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
+/*
+* Модель вертолета
+*/
 @Data
 @SuperBuilder
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-public class AircraftVehicle extends Vehicle{
-    private double wingspan;
-    private double maxAltitude;
-    private double climbRate;
-    private boolean hasAfterburner;
+public class HelicopterVehicle extends Vehicle {
+    private double maxSpeedAtGround;
 }
