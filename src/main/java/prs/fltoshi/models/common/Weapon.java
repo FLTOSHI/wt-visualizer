@@ -32,5 +32,5 @@ public class Weapon {
     @JsonProperty("h_speed")
     private double horizontalSpeed;         // Скорость гор. наводки
 
-    private List<Ammunition> avaiableAmmo;  // Доступные снаряды для орудия.
+    private List<Ammunition> availableAmmo;  // Доступные снаряды для орудия.
 }
