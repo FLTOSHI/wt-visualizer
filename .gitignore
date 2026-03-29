@@ -1,0 +1,18 @@
+# Сборка
+target/
+*.class
+
+# Логи
+*.log
+
+# Настройки IDE
+.idea/
+*.iml
+.vscode/
+.settings/
+.project/
+.classpath/
+
+# Система
+.DS_Store
+Thumbs.db
