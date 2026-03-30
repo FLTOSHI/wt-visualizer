@@ -2,6 +2,7 @@ package prs.fltoshi.models.common;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.AllArgsConstructor;
@@ -16,6 +17,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Weapon {
     private String name;                    // Название орудия
     private String type;                    // Тип (Cannon, Autocannon, ...)
@@ -32,5 +34,11 @@ public class Weapon {
     @JsonProperty("h_speed")
     private double horizontalSpeed;         // Скорость гор. наводки
 
+    @JsonProperty("weapon_type")
+    private String weaponType;              // Тип оружия (cannon, rocket, bomb)
+
+    private int count;                      // Количество орудий/подвесов
+
+    @JsonProperty("ammos")
     private List<Ammunition> availableAmmo;  // Доступные снаряды для орудия.
 }

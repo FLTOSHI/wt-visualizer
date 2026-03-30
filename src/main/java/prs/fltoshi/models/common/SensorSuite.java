@@ -1,5 +1,6 @@
 package prs.fltoshi.models.common;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.AllArgsConstructor;
@@ -14,6 +15,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class SensorSuite {
     // ПНВ, ТПВ
     private boolean hasNvd;                 // Имеет ПНВ?

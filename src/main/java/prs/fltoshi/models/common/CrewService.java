@@ -1,5 +1,6 @@
 package prs.fltoshi.models.common;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.AllArgsConstructor;
@@ -14,18 +15,19 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class CrewService {
     private int crewTotalCount;             // Кол-во членов экипажа техники
     
     @JsonProperty("train1_cost")
-    private int trainFirstCost;             // Базовое обучение (серебро)
+    private int train1Cost;                 // Базовое обучение (серебро)
     
     @JsonProperty("train2_cost")
-    private int trainSecondCost;            // Эксперты (серебро)
+    private int train2Cost;                // Эксперты (серебро)
     
     @JsonProperty("train3_cost_gold")
-    private int trainThirdCostGold;         // Асы (золото)
+    private int train3CostGold;         // Асы (золото)
     
     @JsonProperty("train3_cost_exp")
-    private int trainThirdCostExp;          // Асы (очки исследования)
+    private int train3CostExp;          // Асы (очки исследования)
 }

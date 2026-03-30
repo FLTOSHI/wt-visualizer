@@ -1,5 +1,6 @@
 package prs.fltoshi.models.common;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.AllArgsConstructor;
@@ -14,6 +15,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class EngineStats {
     // TODO: найти способ доставать информацию о двигателе(-ях) 
 
@@ -28,6 +30,8 @@ public class EngineStats {
     // Обороты/мин (RPM)
     @JsonProperty("max_rpm")
     private int maxRpm;
+    @JsonProperty("min_rpm")
+    private int minRpm;
 
     // Скорость вперёд (км/ч или узлы)
     @JsonProperty("max_speed_ab")

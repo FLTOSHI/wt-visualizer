@@ -35,6 +35,7 @@ CREATE TABLE vehicles (
 
 -- Индексы
 CREATE INDEX idx_vehicles_weaponry ON vehicles USING GIN (weapon_system jsonb_path_ops);
+CREATE INDEX idx_vehicles_name_trgm ON vehicles USING GIN (name_loc gin_trgm_ops);
 CREATE INDEX idx_vehicles_identifier_trgm ON vehicles USING GIN (identifier gin_trgm_ops);
 CREATE INDEX idx_vehicles_br_realistic ON vehicles (realistic_br);
 CREATE INDEX idx_vehicles_country_type ON vehicles (country, vehicle_type);

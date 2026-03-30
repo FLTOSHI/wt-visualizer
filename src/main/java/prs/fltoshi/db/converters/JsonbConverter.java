@@ -19,12 +19,8 @@ public class JsonbConverter<T> implements Converter<JSONB, T> {
         }
         try {
             return mapper.readValue(databaseObject.data(), type);
-        } catch (com.fasterxml.jackson.core.JsonProcessingException e) {
-            // Ловим конкретно ошибку парсинга JSON
-            throw new RuntimeException("Ошибка парсинга JSONB для типа " + type.getName(), e);
         } catch (java.io.IOException e) {
-            // Ловим проблемы с вводом-выводом
-            throw new RuntimeException("Ошибка чтения данных JSONB", e);
+            throw new RuntimeException("Ошибка десериализации JSONB для типа " + type.getName(), e);
         }
     }
 

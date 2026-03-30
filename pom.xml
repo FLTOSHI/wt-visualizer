@@ -9,11 +9,48 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
+        <javafx.version>21.0.2</javafx.version>
+        <ikonli.version>12.3.1</ikonli.version>
     </properties>
 
-<dependencies>
+    <dependencies>
+        <!-- JavaFX -->
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-controls</artifactId>
+            <version>${javafx.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-fxml</artifactId>
+            <version>${javafx.version}</version>
+        </dependency>
+
+        <!-- UI Libraries -->
+        <dependency>
+            <groupId>eu.hansolo</groupId>
+            <artifactId>tilesfx</artifactId>
+            <version>21.0.3</version>
+        </dependency>
+        <dependency>
+            <groupId>org.kordamp.ikonli</groupId>
+            <artifactId>ikonli-javafx</artifactId>
+            <version>${ikonli.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.kordamp.ikonli</groupId>
+            <artifactId>ikonli-fontawesome5-pack</artifactId>
+            <version>${ikonli.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.controlsfx</groupId>
+            <artifactId>controlsfx</artifactId>
+            <version>11.2.1</version>
+        </dependency>
+
+        <!-- Core Dependencies -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -89,6 +126,26 @@
                                     <userType>prs.fltoshi.models.common.EngineStats</userType>
                                     <converter>new prs.fltoshi.db.converters.JsonbConverter(prs.fltoshi.models.common.EngineStats.class)</converter>
                                     <includeExpression>engine_data</includeExpression>
+                                </forcedType>
+                                <forcedType>
+                                    <userType>prs.fltoshi.models.common.EconomyRewards</userType>
+                                    <converter>new prs.fltoshi.db.converters.JsonbConverter(prs.fltoshi.models.common.EconomyRewards.class)</converter>
+                                    <includeExpression>economy_data</includeExpression>
+                                </forcedType>
+                                <forcedType>
+                                    <userType>prs.fltoshi.models.common.CrewService</userType>
+                                    <converter>new prs.fltoshi.db.converters.JsonbConverter(prs.fltoshi.models.common.CrewService.class)</converter>
+                                    <includeExpression>crew_data</includeExpression>
+                                </forcedType>
+                                <forcedType>
+                                    <userType>prs.fltoshi.models.common.SensorSuite</userType>
+                                    <converter>new prs.fltoshi.db.converters.JsonbConverter(prs.fltoshi.models.common.SensorSuite.class)</converter>
+                                    <includeExpression>sensors_data</includeExpression>
+                                </forcedType>
+                                <forcedType>
+                                    <userType>prs.fltoshi.models.common.Modification[]</userType>
+                                    <converter>new prs.fltoshi.db.converters.JsonbConverter(prs.fltoshi.models.common.Modification[].class)</converter>
+                                    <includeExpression>modifications</includeExpression>
                                 </forcedType>
                             </forcedTypes>
                         </database>

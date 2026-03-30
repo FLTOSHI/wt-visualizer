@@ -12,6 +12,8 @@ import prs.fltoshi.models.common.CrewService;
 import prs.fltoshi.models.common.EconomyRewards;
 import prs.fltoshi.models.common.RepairStats;
 import prs.fltoshi.models.common.WeaponSystem;
+import prs.fltoshi.models.common.EngineStats;
+import prs.fltoshi.models.common.Modification;
 
 /*
 * Базовый класс для всех видов техники
@@ -19,7 +21,7 @@ import prs.fltoshi.models.common.WeaponSystem;
 @Data
 @SuperBuilder
 @NoArgsConstructor
-public abstract class Vehicle {
+public class Vehicle {
     private String identifier;
     private String country;
     private String vehicleType;
@@ -74,4 +76,16 @@ public abstract class Vehicle {
     private int visibility;
     private String requiredVehicle;
     private double mass;
+
+    // --- Бронирование (мм) ---
+    private int[] hullArmor;
+    private int[] turretArmor;
+
+    // --- Прочее ---
+    private List<String> versions;
+    private boolean hasCustomizableWeapons;
+
+    // --- Двигатель и модификации ---
+    private EngineStats engine;
+    private List<Modification> modifications;
 }

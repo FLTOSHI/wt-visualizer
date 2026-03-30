@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import org.controlsfx.control.RangeSlider?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="prs.fltoshi.ui.MainController"
+            prefHeight="800.0" prefWidth="1200.0" styleClass="main-container">
+
+    <!-- 1. Сайдбар -->
+    <left>
+        <VBox prefWidth="250.0" spacing="15.0" styleClass="sidebar">
+            <padding>
+                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+            </padding>
+            <children>
+                <!-- Верх: Название приложения -->
+                <Label styleClass="title-2" text="WT Visualizer" style="-fx-text-fill: #ffaa00; -fx-font-weight: bold;"/>
+                <Separator />
+                
+                <!-- Центр: Меню навигации -->
+                <VBox spacing="10.0" VBox.vgrow="ALWAYS">
+                    <fx:define>
+                        <ToggleGroup fx:id="navigationGroup"/>
+                    </fx:define>
+                    <ToggleButton fx:id="btnCatalog" text="Каталог техники" toggleGroup="$navigationGroup" selected="true" maxWidth="Infinity">
+                        <graphic>
+                            <FontIcon iconLiteral="fas-th-list" iconSize="16"/>
+                        </graphic>
+                    </ToggleButton>
+                    <ToggleButton fx:id="btnCompare" text="Сравнение" toggleGroup="$navigationGroup" maxWidth="Infinity" disable="true">
+                        <graphic>
+                            <FontIcon iconLiteral="fas-balance-scale" iconSize="16"/>
+                        </graphic>
+                    </ToggleButton>
+                </VBox>
+                
+                <!-- Низ: Настройки и Версия -->
+                <VBox spacing="5.0" alignment="BOTTOM_LEFT">
+                    <Button text="Настройки" maxWidth="Infinity">
+                        <graphic>
+                            <FontIcon iconLiteral="fas-cog" iconSize="14"/>
+                        </graphic>
+                    </Button>
+                    <Label text="v1.0.0" styleClass="text-muted" />
+                </VBox>
+            </children>
+        </VBox>
+    </left>
+
+    <!-- 2. Центральная область -->
+    <center>
+        <StackPane fx:id="mainContentStack">
+            
+            <!-- А) Режим "Каталог" -->
+            <BorderPane fx:id="catalogView">
+                <top>
+                    <HBox spacing="15.0" alignment="CENTER_LEFT" styleClass="filters-panel">
+                        <padding>
+                            <Insets top="15.0" right="20.0" bottom="15.0" left="20.0"/>
+                        </padding>
+                        <VBox spacing="5.0">
+                            <Label text="Search" />
+                            <TextField fx:id="searchField" promptText="Vehicle name..." prefWidth="200" />
+                        </VBox>
+                        <VBox spacing="5.0">
+                            <Label text="Nation" />
+                            <ComboBox fx:id="nationComboBox" promptText="All Nations" prefWidth="150" />
+                        </VBox>
+                        <VBox spacing="5.0">
+                            <Label text="Vehicle Type" />
+                            <ComboBox fx:id="typeComboBox" promptText="All Types" prefWidth="150" />
+                        </VBox>
+                        <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                            <Label text="Battle Rating (RB)" />
+                            <HBox spacing="10" alignment="CENTER_LEFT">
+                                <Label fx:id="minBrLabel" text="1.0" minWidth="25"/>
+                                <RangeSlider fx:id="brSlider" max="12.7" min="1.0" lowValue="1.0" highValue="12.7"
+                                             showTickLabels="false" showTickMarks="false" majorTickUnit="1.0" HBox.hgrow="ALWAYS"/>
+                                <Label fx:id="maxBrLabel" text="12.7" minWidth="25"/>
+                            </HBox>
+                        </VBox>
+                        <VBox alignment="BOTTOM_CENTER">
+                            <Button fx:id="resetButton" text="Reset Filters" styleClass="danger" />
+                        </VBox>
+                    </HBox>
+                </top>
+                <center>
+                    <ScrollPane fitToWidth="true" hbarPolicy="NEVER" styleClass="content-scroll">
+                        <content>
+                            <FlowPane fx:id="vehicleFlowPane" hgap="15.0" vgap="15.0">
+                                <padding>
+                                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                </padding>
+                            </FlowPane>
+                        </content>
+                    </ScrollPane>
+                </center>
+            </BorderPane>
+
+            <!-- Б) Режим "Инспектор" (скрыт по умолчанию) -->
+            <ScrollPane fx:id="inspectorView" visible="false" fitToWidth="true" styleClass="content-scroll">
+                <content>
+                    <VBox spacing="20.0">
+                        <padding>
+                            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                        </padding>
+                        <HBox alignment="CENTER_LEFT">
+                            <Button fx:id="backToCatalogBtn" text="Назад к каталогу" styleClass="accent">
+                                <graphic>
+                                    <FontIcon iconLiteral="fas-arrow-left" iconSize="14"/>
+                                </graphic>
+                            </Button>
+                        </HBox>
+                        <VBox fx:id="inspectorContent" spacing="15.0">
+                            <!-- Component injection root -->
+                        </VBox>
+                    </VBox>
+                </content>
+            </ScrollPane>
+            
+        </StackPane>
+    </center>
+</BorderPane>
